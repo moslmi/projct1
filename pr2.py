@@ -1,23 +1,49 @@
 class Person:
-    def __init__(self, Name, setNumber, setAdress):
-        self.Name=Name
+    def __init__(self, Name):
+      self.Name=Name
+   
+    def set_setNumber(self,setNumber):
         self.setNumber=setNumber
-        self.setAdress=setAdress
+    def set_setAdress(self,setAdress):
+        self.setAdress=setAdress  
+    
+    def get_printsetnumber(self):
+        return self.setNumber
+    def get_printsetAdress(self):
+        return self.setAdress
+   
 class Student(Person):
-    def __init__(self, Name, setNumber, setAdress, enterDate, status):
+    def __init__(self, Name, setNumber, setAdress):
          Person.__init__(self, Name, setNumber, setAdress)
+    
+    def set_enterDate(self, enterDate):
+        self.enterDate=enterDate    
+    def set_status(self,status):
+        self.status=status
         
-         self.enterDate=enterDate
-         if (status == "freshman" or status =="sophomore"or status =="junior"or status =="senior"):
-          self.status=status
-class Employee(Person):
-    def __init__(self, Name, setNumber, setAdress, tarikhestekhdam, setSalary):
-        Person.__init__(self, Name, setNumber, setAdress)
-      
-        self.tarikhestekhdam= tarikhestekhdam
-        self.setSalary=setSalary
+    def get_printstatus(self):
+        if self.status=="freshman" or "sophomore"or "junior"or"senior":
+            return self.status
+        else:
+            return "false"
+    def get_printStudent(self):
+        return self.enterDate, self.status   
 
-Reza=Student("reza", 922387465,"Mashhad", "1402/2/5", "man")
-Jack=Employee("jack", 284847538, "Tehran", "1402/5/3", 23490)
-print(Reza,Jack)
+class Employee(Person):
+    def __init__(self, Name, setNumber, setAdress):
+        Person.__init__( self, Name, setNumber, setAdress)
+    
+    def set_tarikhestekhdam(self, tarikhestekhdam):   
+        self.tarikhestekhdam=tarikhestekhdam
+    def set_Salary(self, Salary):
+        self.Salary=Salary
+    
+    def get_printEmployee(self):
+        return self.tarikhestekhdam, self.Salary
+
+Judie=Student("Judie", 922387465,"Mashhad","1402/2/5", "man")
+Jack=Employee("Jack", 284847538, "Tehran", "1402/5/3", 23490)
+
+print(Judie.get_printStudent())
+print(Jack.get_printEmployee())
        
